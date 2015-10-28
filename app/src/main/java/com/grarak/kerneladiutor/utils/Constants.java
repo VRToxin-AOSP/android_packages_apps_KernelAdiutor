@@ -558,6 +558,19 @@ public interface Constants {
     String[][] WAKE_ARRAY = {DT2W_ARRAY, S2W_ARRY, T2W_ARRAY, WAKE_MISC_ARRAY, SLEEP_MISC_ARRAY, WAKE_TIMEOUT_ARRAY,
             {GESTURE_CRTL, POWER_KEY_SUSPEND}};
 
+
+    // LED
+    String LHC = "/sys/class/sec/led/led_highpower_current";
+    String LLC = "/sys/class/sec/led/led_lowpower_current";
+    String LNDO = "/sys/class/sec/led/led_notification_delay_on";
+    String LNDOFF = "/sys/class/sec/led/led_notification_delay_off";
+    String LNRC = "/sys/class/sec/led/led_notification_ramp_control";
+    String LNRU = "/sys/class/sec/led/led_notification_ramp_up";
+    String LNRD = "/sys/class/sec/led/led_notification_ramp_down";
+    String LP = "/sys/class/sec/led/led_pattern";
+
+    String[] LED_ARRAY = {LHC, LLC, LNDO, LNDOFF, LNRC, LNRU, LNRD, LP};
+
     // Camera Gesture
     String CAMERA_GESTURE = "/sys/android_touch/camera_gesture";
 
