@@ -519,6 +519,9 @@ public interface Constants {
 
     String[] S2W_ARRY = {S2W_ONLY, SW2, SW2_2};
 
+    // S2W Leniency
+    String LENIENT = "/sys/android_touch/sweep2wake_sensitive";
+
     // T2W
     String TSP_T2W = "/sys/devices/f9966000.i2c/i2c-1/1-004a/tsp";
     String TOUCHWAKE_T2W = "/sys/class/misc/touchwake/enabled";
@@ -560,7 +563,7 @@ public interface Constants {
     String POWER_KEY_SUSPEND = "/sys/module/qpnp_power_on/parameters/pwrkey_suspend";
 
     String[][] WAKE_ARRAY = {DT2W_ARRAY, S2W_ARRY, T2W_ARRAY, WAKE_MISC_ARRAY, SLEEP_MISC_ARRAY, WAKE_TIMEOUT_ARRAY,
-            {GESTURE_CRTL, POWER_KEY_SUSPEND}};
+            {GESTURE_CRTL, POWER_KEY_SUSPEND, LENIENT}};
 
     //Wake Gesture Vibration 
     String WAKE_VIBRATION = "/sys/android_touch2/vib_strength";

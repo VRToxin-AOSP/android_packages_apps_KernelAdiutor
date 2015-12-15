@@ -37,6 +37,7 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
 
     private PopupCardView.DPopupCard mDt2wCard;
     private PopupCardView.DPopupCard mS2wCard;
+    private SwitchCardView.DSwitchCard mLenientCard;
     private PopupCardView.DPopupCard mT2wCard;
     private PopupCardView.DPopupCard mWakeMiscCard;
     private PopupCardView.DPopupCard mSleepMiscCard;
@@ -56,6 +57,7 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
 
         if (Wake.hasDt2w()) dt2wInit();
         if (Wake.hasS2w()) s2wInit();
+        if (Wake.hasLenient()) lenientInit();
         if (Wake.hasT2w()) t2wInit();
         if (Wake.hasWakeMisc()) wakeMiscInit();
         if (Wake.hasSleepMisc()) sleepMiscInit();
@@ -87,6 +89,16 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
         mS2wCard.setOnDPopupCardListener(this);
 
         addView(mS2wCard);
+    }
+
+    private void lenientInit() {
+        mLenientCard = new SwitchCardView.DSwitchCard();
+        mLenientCard.setTitle(getString(R.string.lenient));
+        mLenientCard.setDescription(getString(R.string.lenient_summary));
+        mLenientCard.setChecked(Wake.isLenientActive());
+        mLenientCard.setOnDSwitchCardListener(this);
+
+        addView(mLenientCard);
     }
 
     private void t2wInit() {
@@ -242,7 +254,9 @@ public class WakeFragment extends RecyclerViewFragment implements PopupCardView.
 
     @Override
     public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
-        if (dSwitchCard == mPowerKeySuspendCard)
+        if (dSwitchCard == mLenientCard)
+            Wake.activateLenient(checked, getActivity());
+        else if (dSwitchCard == mPowerKeySuspendCard)
             Wake.activatePowerKeySuspend(checked, getActivity());
 	else if (dSwitchCard == mCameraGestureCard)
 		Wake.activateCameraGesture(checked, getActivity());
